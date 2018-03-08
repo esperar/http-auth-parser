@@ -1,7 +1,7 @@
 # http-auth-parser
 
-[![Build Status](https://travis-ci.org/toss/http-auth-parser.svg?branch=master)
-[![codecov](https://codecov.io/gh/toss/http-auth-parser/branch/master/graph/badge.svg)
+[![Build Status](https://travis-ci.org/toss/http-auth-parser.svg?branch=master)](https://travis-ci.org/toss/http-auth-parser)
+[![codecov](https://codecov.io/gh/toss/http-auth-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/toss/http-auth-parser)
 
 HTTP Authorization header parser
 
