@@ -3,6 +3,6 @@ language: java
 script:
   - ./gradlew junitPlatformTest
   - cp ./build/jacoco/junitPlatformTest.exec ./build/jacoco/test.exec
-  - ./gradlew codeCoverageReport
+  - ./gradlew jacocoTestReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)
