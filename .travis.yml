@@ -1,7 +1,8 @@
-install: gradle wrapper
+install: gradle wrapper --gradle-version=4.6
 language: java
 script:
-  - ./gradlew check
+  - ./gradlew junitPlatformTest
+  - cp ./build/jacoco/junitPlatformTest.exec ./build/jacoco/test.exec
   - ./gradlew codeCoverageReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)

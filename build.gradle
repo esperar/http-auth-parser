@@ -23,7 +23,6 @@ dependencies {
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'jacoco'
-
     idea {
         module {
             outputDir file('build/classes/main')
@@ -70,25 +69,26 @@ junitPlatform {
     // logManager (optional)
 }
 
-subprojects {
-    test.useTestNG()
+jacoco {
+    applyTo(junitPlatformTest)
 }
 
-task codeCoverageReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
+jacocoTestReport {
     reports {
-        xml.enabled true
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
-        html.enabled false
+        xml.enabled false
         csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
     }
+
+    onlyIf = { true }
 }
 
-codeCoverageReport.dependsOn {
-    subprojects*.test
+subprojects {
+   tasks.withType(JavaExec) {
+        if (it.name == 'junitPlatformTest') {
+            doFirst {
+                jvmArgs "-javaagent:${configurations.testAgent.singleFile}=destfile=${project.buildDir.name}/jacoco/test.exec"
+            }
+        }
+    }
 }
