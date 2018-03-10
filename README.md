@@ -14,6 +14,42 @@ To add a dependency on http-auth-parser using Gradle:
 
 For more about depending on http-auth-parser, see [the central repository](https://search.maven.org/#artifactdetails%7Cim.toss%7Chttp-auth-parser%7C0.1.2%7Cjar).
 
+### Examples
+
+parsing scheme and token68:
+
+```java
+credentials = HttpAuthCredentials.parse("Basic YWxhZGRpbjpvcGVuc2VzYW1l");
+credentials.getScheme().equals("Basic");
+credentials.getToken().equals("YWxhZGRpbjpvcGVuc2VzYW1l");
+```
+
+parsing scheme and auth params:
+
+```java
+credentials = HttpAuthCredentials.parse("Custom k1=v1, k2=v2");
+credentials.getScheme().equals("Custom");
+credentials.getToken().equals("");
+credentials.getParams().get("k1").equals(Arrays.asList("v1"));
+credentials.getParams().get("k2").equals(Arrays.asList("v1"));
+```
+
+parsing scheme, token68 and auth params even if it violates RFC 7235:
+
+```java
+credentials = HttpAuthCredentials.parse("Custom mytoken, k1=v1");
+credentials.getScheme().equals("Custom");
+credentials.getToken().equals("mytoken");
+credentials.getParams().get("k1").equals(Arrays.asList("v1"));
+```
+
+parsing auth params with multiple parameter names even if it violates RFC 7235:
+
+```java
+credentials = HttpAuthCredentials.parse("Custom k1=v1, k1=v2");
+credentials.getParams().get("k1").equals(Arrays.asList("v1", "v2"));
+```
+
 ## Maintainers
 
 * [Yi EungJun](https://github.com/eungjun-yi)
