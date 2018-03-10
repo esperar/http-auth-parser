@@ -10,9 +10,9 @@ HTTP Authorization header parser
 
 To add a dependency on http-auth-parser using Gradle:
 
-    compile "im.toss:http-auth-parser:0.1.0"
+    compile "im.toss:http-auth-parser:0.1.2"
 
-For more about depending on http-auth-parser, see [the central repository](https://search.maven.org/#artifactdetails%7Cim.toss%7Chttp-auth-parser%7C0.1.0%7Cjar).
+For more about depending on http-auth-parser, see [the central repository](https://search.maven.org/#artifactdetails%7Cim.toss%7Chttp-auth-parser%7C0.1.2%7Cjar).
 
 ## Maintainers
 
