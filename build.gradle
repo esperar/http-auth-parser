@@ -76,32 +76,11 @@ junitPlatform {
     // logManager (optional)
 }
 
-jacoco {
-    applyTo(junitPlatformTest)
-}
-
 jacocoTestReport {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
-    subprojects.each {
-        sourceSets it.sourceSets.main
-    }
-
     reports {
         xml.enabled true
-        xml.destination file("${buildDir}/reports/jacoco/report.xml")
-        html.enabled false
-        csv.enabled false
-    }
-}
-
-subprojects {
-   tasks.withType(JavaExec) {
-        if (it.name == 'junitPlatformTest') {
-            doFirst {
-                jvmArgs "-javaagent:${configurations.testAgent.singleFile}=destfile=${project.buildDir.name}/jacoco/test.exec"
-            }
-        }
     }
 }
 

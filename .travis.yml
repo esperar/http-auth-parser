@@ -1,7 +1,7 @@
 install: gradle wrapper --gradle-version=4.6
 language: java
 script:
-  - ./gradlew junitPlatformTest
+  - ./gradlew check
   - cp ./build/jacoco/junitPlatformTest.exec ./build/jacoco/test.exec
   - ./gradlew jacocoTestReport
 after_success:
