@@ -33,7 +33,7 @@ jar {
 dependencies {
     testCompile 'org.assertj:assertj-core:3.9.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
