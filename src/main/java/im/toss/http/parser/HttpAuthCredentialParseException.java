@@ -1,6 +1,6 @@
 package im.toss.http.parser;
 
-class HttpAuthCredentialParseException extends RuntimeException {
+public class HttpAuthCredentialParseException extends RuntimeException {
 
     HttpAuthCredentialParseException(String s, Exception e) {
         super(s, e);
