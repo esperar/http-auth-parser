@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
  */
 class Rfc7235Token68Validator extends AbstractTokenValidator {
 
+    private static final Pattern p = Pattern.compile("[^-A-Za-z0-9!#$%&'*+.^_`|~]");
+
     /**
      * Validates a token68.
      *
@@ -19,7 +21,6 @@ class Rfc7235Token68Validator extends AbstractTokenValidator {
      */
     @Override
     public void validate(String token68) {
-        Pattern p = Pattern.compile("[^-A-Za-z0-9!#$%&'*+.^_`|~]");
         Matcher matcher = p.matcher(token68);
         if (matcher.find()) {
             if (matcher.start() == token68.length() - 1 && matcher.group().equals("=")) {

@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
  */
 class Rfc7230TokenValidator extends AbstractTokenValidator {
 
+    private static final Pattern p = Pattern.compile("[^-A-Za-z0-9!#$%&'*+.^_`|~ \"\\\\]");
+
     /**
      * Validates a token
      *
@@ -19,7 +21,6 @@ class Rfc7230TokenValidator extends AbstractTokenValidator {
      */
     @Override
     public void validate(String token) {
-        Pattern p = Pattern.compile("[^-A-Za-z0-9!#$%&'*+.^_`|~ \"\\\\]");
         Matcher matcher = p.matcher(token);
         if (matcher.find()) {
             throw new TokenValidationException(unexpectedCharacterError(matcher.group(),
